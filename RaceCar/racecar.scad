@@ -1,7 +1,12 @@
 include <racecar-lib.scad>
 
 /* Example 01.
- * racecar(bodyWidth = 38 // Car width.
+ * Standard racecar.
+ * racecar(bodyType = 1 // Body type:
+ *                        1 - Racer body
+ *                        2 - Boat body
+ *                        3 - Squared body
+ *         bodyWidth = 38 // Car width.
  *         bodyLength = 68 // Car length.
  *         bodyHeight = 24 // Car height.
  *         tireRadius=13 // Tire Radius; Max should be ~35% of car length.
@@ -12,5 +17,16 @@ include <racecar-lib.scad>
  *         axleZOffset=6 // The distnace from the center of the car body on the z-axis.
  *         roofOffset=0.9 // The percentage offset from the center of the car body on the y-axis.
  *         headLightRadius=3 // The head light radius; tail lights are half this value.
+ *         singleItem="wheel"
  */
-racecar(tireWidth=10);
+racecar();
+
+/* Example 02.
+ * Boat body.
+ */
+ //racecar(bodyType=2);
+ 
+/* Example 03.
+ * Squared body with fat tires.
+ */
+//racecar(bodyType=3, bodyWidth=42, tireWidth=16);
