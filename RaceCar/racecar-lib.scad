@@ -86,12 +86,13 @@ module axles(length=bodyWidth - tireWidth, tapered=true, axleRadiusOffset=1) {
             translate([xOffset*(bodyWidth/2), yOffset * axleYOffset, axleZOffset])
                 rotate([0, 90, 0])
                     cube([axleRadius*1.9, 1, tireWidth], center=true);
-        
-    for(xOffset=[-1,1])
+    
+    // wheel stop
+    /*for(xOffset=[-1,1])
         for(yOffset=[-1,1])
             translate([xOffset*(bodyWidth/2 - tireWidth/2 - 0.25), yOffset * axleYOffset, axleZOffset])
                 rotate([0, 0, 90])
-                    cube([1, 0.5, axleRadius*2.25], center=true);
+                    cube([1, 0.5, axleRadius*2.25], center=true);*/
 }
 
 module body() {
@@ -184,13 +185,12 @@ module lights() {
 
 
     // build the parts
-rotate([0, 180, 0])
+    rotate([0, 180, 0])
     if (!singleItem) {
-        //rotate([0, 180, 0])
         union() {
             body();
             wheels();
-            //hubCaps();
+            hubCaps();
             axles();
         }
     } else if (singleItem=="body") {
@@ -203,5 +203,3 @@ rotate([0, 180, 0])
         axles();
     }
 }
-//rotate([0, 180, 0])
-racecar();
