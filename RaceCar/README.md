@@ -9,4 +9,4 @@ or linoleum flooring.
 I made this toy for my son and his Fisher-Price Speed Tower. We wanted more
 cars. Instead, of buying them separately, we designed and printed our own.
 
-You can find the [files on Thingiverse](http://www.thingiverse.com/thing:721565).
+You can [find the files on Thingiverse](http://www.thingiverse.com/thing:721565).
