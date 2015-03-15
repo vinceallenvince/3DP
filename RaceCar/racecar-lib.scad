@@ -61,19 +61,19 @@ module axles(length=bodyWidth - tireWidth, tapered=true, axleRadiusOffset=1) {
                 rotate([0, 90, 0])
                     cylinder(r=axleRadius*axleRadiusOffset, h=bodyWidth + tireWidth, center=true);
     } else {
-        for(yOffset=[-1])
+        for(yOffset=[-1,1])
             color([1, 0, 0])
             translate([bodyWidth/2 + 0.5, yOffset * axleYOffset, axleZOffset])
                     rotate([0, 90, 0])
                         cylinder(r1=axleRadius, r2=axleRadius*0.75, h=tireWidth - 1, center=true);
         
-        for(yOffset=[-1])
+        for(yOffset=[-1,1])
             color([1, 0, 0])
                 translate([-bodyWidth/2 - 0.5, yOffset * axleYOffset, axleZOffset])
                     rotate([0, 90, 0])
                         cylinder(r1=axleRadius*0.75, r2=axleRadius, h=tireWidth - 1, center=true);
         
-        for(yOffset=[-1])
+        for(yOffset=[-1,1])
             translate([0, yOffset * axleYOffset, axleZOffset])
                 rotate([0, 90, 0])
                     cylinder(r=axleRadius, h=bodyWidth-tireWidth + 2, center=true);
