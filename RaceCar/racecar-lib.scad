@@ -61,19 +61,19 @@ module axles(length=bodyWidth - tireWidth, tapered=true, axleRadiusOffset=1) {
                 rotate([0, 90, 0])
                     cylinder(r=axleRadius*axleRadiusOffset, h=bodyWidth + tireWidth, center=true);
     } else {
-        for(yOffset=[-1,1])
+        for(yOffset=[-1])
             color([1, 0, 0])
             translate([bodyWidth/2 + 0.5, yOffset * axleYOffset, axleZOffset])
                     rotate([0, 90, 0])
                         cylinder(r1=axleRadius, r2=axleRadius*0.75, h=tireWidth - 1, center=true);
         
-        for(yOffset=[-1,1])
+        for(yOffset=[-1])
             color([1, 0, 0])
                 translate([-bodyWidth/2 - 0.5, yOffset * axleYOffset, axleZOffset])
                     rotate([0, 90, 0])
                         cylinder(r1=axleRadius*0.75, r2=axleRadius, h=tireWidth - 1, center=true);
         
-        for(yOffset=[-1,1])
+        for(yOffset=[-1])
             translate([0, yOffset * axleYOffset, axleZOffset])
                 rotate([0, 90, 0])
                     cylinder(r=axleRadius, h=bodyWidth-tireWidth + 2, center=true);
@@ -82,17 +82,23 @@ module axles(length=bodyWidth - tireWidth, tapered=true, axleRadiusOffset=1) {
     }
     
     for(xOffset=[-1,1])
-        for(yOffset=[-1,1])
+        for(yOffset=[-1])
             translate([xOffset*(bodyWidth/2), yOffset * axleYOffset, axleZOffset])
                 rotate([0, 90, 0])
                     cube([axleRadius*1.9, 1, tireWidth], center=true);
     
-    // wheel stop
-    /*for(xOffset=[-1,1])
-        for(yOffset=[-1,1])
+    // wheel stops
+    for(xOffset=[-1,1])
+        for(yOffset=[-1])
             translate([xOffset*(bodyWidth/2 - tireWidth/2 - 0.25), yOffset * axleYOffset, axleZOffset])
                 rotate([0, 0, 90])
-                    cube([1, 0.5, axleRadius*2.25], center=true);*/
+                    cube([1, 0.5, axleRadius*2.25], center=true);
+        
+    for(xOffset=[-1,1])
+        for(yOffset=[-1])
+            translate([xOffset*(bodyWidth/2 - tireWidth/2 - 0.25), yOffset * axleYOffset, axleZOffset])
+                rotate([90, 90, 0])
+                    cube([1, 0.5, axleRadius*2.25], center=true);
 }
 
 module body() {
