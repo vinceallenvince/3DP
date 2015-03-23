@@ -22,7 +22,7 @@ include <miniracer-lib.scad>
  *                              - "hubcaps"
  *                              - "axles"
  */
-miniracer();
+miniracer(bodyType=3);
 
 /* Example 02.
  * Boat body.
