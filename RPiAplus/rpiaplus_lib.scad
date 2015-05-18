@@ -1,19 +1,13 @@
 $fa=0.5;
 $fs=0.5;
 
-RPiFootprintHeight = 3;
-standoffHeight = 6;
+// RPi Dimensions: 65mm x 56mm
 
-// create an array holding 4 locations for mounting holes // 3, 62, 3, 53
-footprintPadding = 12;
-
-module corner(height=RPiFootprintHeight) {
-    color("cyan")
-    cylinder(r=3, h=height, center=true);
+module corner(radius=4, height=3) {
+    cylinder(r=radius, h=height, center=true);
 }
 
 module RPiMountingHole(h=20) {
-    //cylinder(r=3.1, h=19, center=true); // pads
     cylinder(r=1.825, h=h, center=true);
 }
 
@@ -21,72 +15,207 @@ module baseMountingHole(h=20) {
     cylinder(r=3, h=h, center=true);
 }
 
-module standoff() {
-    color("cyan")
+module baseCorners(padding=0, z=0) {
+    for (x=[32.5+padding, -32.5-padding]) { 
+        for (y=[32.5+padding, -32.5-padding]) { 
+            translate([x, y, z])
+            corner(radius=2.75, height=10);
+        }
+    }
+}
+
+module standoff(standoffHeight=4) {
     difference() {
         cylinder(r=2.75, h=standoffHeight, center=true);
         cylinder(r=1.825, h=standoffHeight*1.1, center=true);
     }
 }
 
-// base
-// need base mounting holes
-/*difference() {
-    
-    hull() {
-        for (x=[3 - footprintPadding, 62 + footprintPadding]) { 
-            for (y=[3 - footprintPadding, 53 + footprintPadding]) { 
-                translate([x, y, 0])
-                    corner();
-            }
-        }
+module spacer(radius=2.75, thickness=1.25, height=30) {
+    difference() {
+        cylinder(r=radius+thickness, height, center=true);
+        cylinder(r=radius, 110, center=true);
     }
-    
-    // holes
-    for (x=[3.5, 61.5]) { 
-        for (y=[3.5, 52.5]) { 
-            translate([x, y, 0])
-                RPiMountingHole();
-        }
-    }
-    
-    // corners
-    for (x=[6 - footprintPadding, 59 + footprintPadding]) { 
-        for (y=[6 - footprintPadding, 50 + footprintPadding]) { 
-            translate([x, y, 0])
-            corner(height=10);
-        }
-    }
-}*/
+}
+
+module grillInsert(r=10, a=10, h=30, cylinderRadius=1) {
+    translate([r * cos(a), r * sin(a), 0])
+        cylinder(r=cylinderRadius, h=h, center=true);
+}
 
 
-
-// standoffs
-/*for (x=[3.5, 61.5]) { 
-    for (y=[3.5, 52.5]) { 
-        translate([x, y, standoffHeight/2 + RPiFootprintHeight/2])
-            standoff();
-    }
-}*/
-
-// RPi footprint
-difference() {
-    color("red")
-    hull() {
-        for (x=[3, 62]) { 
-            for (y=[3, 53]) { 
-                translate([x, y, standoffHeight + RPiFootprintHeight])
-                    corner();
-            }
-        }
-    }
-
-    // holes
-    for (x=[3.5, 61.5]) { 
-        for (y=[3.5, 52.5]) { 
-            translate([x, y, 0])
-                RPiMountingHole(40);
+module grillPattern(rings=12, stepFactor=120, h=10) {
+    for (step = [1 : rings]) {
+        for (i = [0 : stepFactor/step : 360]) {
+            grillInsert(r = 2.5 * step, a = i, h=h);
         }
     }
 }
+
+module enclosure(wallThickness=3,
+                RPiOffsetX=0,
+                RPiOffsetY=0,
+                edgePadding=12,
+                printRPi=false,
+                standoffHeight=4,
+                spcRPiH=26,
+                spcSpeakerH=18,
+                spcGrillH=6,
+                printGrill=false) {
     
+    // Base
+    translate([0, 0, wallThickness/2])
+        difference() {
+            
+            hull() {
+                for (x=[32.5+edgePadding, -32.5-edgePadding]) { 
+                    for (y=[32.5+edgePadding, -32.5-edgePadding]) { 
+                        translate([x, y, 0])
+                            corner(height=wallThickness);
+                    }
+                }
+            }
+            
+            // holes; -3.5 from RPI edge
+            translate([RPiOffsetX, RPiOffsetY, 0])
+                for (x=[29.25, -29.25]) { 
+                    for (y=[24.75, -24.75]) { 
+                        translate([x, y, 0])
+                            RPiMountingHole();
+                    }
+                }
+            
+            baseCorners(padding=edgePadding, z=0);
+        };
+        
+    // Standoffs
+    translate([RPiOffsetX, RPiOffsetY, 0])
+        for (x=[29.25, -29.25]) { 
+                for (y=[24.75, -24.75]) {  
+                translate([x, y, standoffHeight/2 + wallThickness])
+                    standoff(standoffHeight=4);
+            }
+        };
+
+    // RPi board
+    if (printRPi==true) {
+        difference() {
+            translate([RPiOffsetX, RPiOffsetY, 0])
+            hull() {
+                for (x=[31, -31]) { 
+                    for (y=[26.5, -26.5]) { 
+                        translate([x, y, standoffHeight + wallThickness * 1.5])
+                            corner(radius=3, height=wallThickness);
+                    }
+                }
+            }
+        
+            // holes; -3.5 from RPI edge
+            translate([RPiOffsetX, RPiOffsetY, 0])
+                for (x=[29.25, -29.25]) { 
+                    for (y=[24.75, -24.75]) { 
+                        translate([x, y, 0])
+                            RPiMountingHole(40);
+                    }
+                }
+        }
+    }
+    
+    // spacers; base -> speaker bottom mount
+    for (x=[32.5+edgePadding, -32.5-edgePadding]) { 
+        for (y=[32.5+edgePadding, -32.5-edgePadding]) { 
+            translate([x, y, spcRPiH/2 + wallThickness])
+            spacer(height=spcRPiH);
+        }
+    }
+    
+    // speaker bottom mount
+    difference() {
+        
+        mountZ = spcRPiH + wallThickness * 1.5;
+        
+        hull() {
+            for (x=[32.5+edgePadding, -32.5-edgePadding]) { 
+                for (y=[32.5+edgePadding, -32.5-edgePadding]) { 
+                    translate([x, y, mountZ])
+                        corner(height=wallThickness);
+                }
+            }
+        }
+     
+        baseCorners(padding=edgePadding, z=mountZ);
+        
+        translate([0, 0, mountZ])
+            cylinder(r1=22, r2=25, h=10, center=true);
+    }
+    
+    // spacers; speaker bottom mount -> speaker top mount
+    for (x=[32.5+edgePadding, -32.5-edgePadding]) { 
+        for (y=[32.5+edgePadding, -32.5-edgePadding]) { 
+            translate([x, y, spcRPiH + (wallThickness * 2) + spcSpeakerH/2])
+            spacer(height=spcSpeakerH);
+        }
+    }
+    
+    // speaker top mount
+    difference() {
+        
+        mountZ = spcRPiH + (wallThickness * 2.5) + spcSpeakerH;
+        
+        hull() {
+            for (x=[32.5+edgePadding, -32.5-edgePadding]) { 
+                for (y=[32.5+edgePadding, -32.5-edgePadding]) { 
+                    translate([x, y, mountZ])
+                        corner(height=wallThickness);
+                }
+            }
+        }
+     
+        baseCorners(padding=edgePadding, z=mountZ);
+        
+        translate([0, 0, mountZ])
+            cylinder(r1=26, r2=23, h=10, center=true);
+    }
+    
+    // spacers; speaker top mount -> grill
+    if (printGrill == true) {
+        for (x=[32.5+edgePadding, -32.5-edgePadding]) { 
+            for (y=[32.5+edgePadding, -32.5-edgePadding]) { 
+                translate([x, y, spcRPiH + (wallThickness * 3) + spcSpeakerH + spcGrillH/2])
+                spacer(height=spcGrillH);
+            }
+        }
+        
+        // Grill
+        difference() {
+            
+            mountZ = spcRPiH + (wallThickness * 3.5) + spcSpeakerH + spcGrillH;
+            
+            hull() {
+                for (x=[32.5+edgePadding, -32.5-edgePadding]) { 
+                    for (y=[32.5+edgePadding, -32.5-edgePadding]) { 
+                        translate([x, y, mountZ])
+                            corner(height=wallThickness);
+                    }
+                }
+            }
+         
+            baseCorners(padding=edgePadding, z=mountZ);
+            
+            translate([0, 0, mountZ])
+                grillPattern(stepFactor=120);
+        }
+    }
+}
+
+
+
+// screws
+/*screwHeight = spcRPiH + (wallThickness * 4) + spcSpeakerH;
+echo("outer screw height: ");
+echo(screwHeight);
+color("red")
+translate([0, 0, screwHeight/2])
+    cylinder(r=3, h=screwHeight, center=true);*/
+
+
