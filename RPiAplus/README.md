@@ -1,12 +1,19 @@
 #RPiA+ Audio project enclosure
 
-3D print a simple enclosure for a Raspberry Pi audio project. I designed the enclosure around the Raspberry Pi A+ and the small Veho rechargeable speaker. It's meant to have a small physical footprint while protecting vital components.
+3D print a simple enclosure for a Raspberry Pi audio project. I designed the enclosure around the Raspberry Pi A+ and the small Veho rechargeable speaker. It's meant to have a small physical footprint while protecting hardware components.
 
 Including the fasteners, spacers and hardware, there are 34 total parts. The 3D parts require ~2 hours printing time. The hardware and fasteners cost ~$60.00. See the full list below.
 
 ![3 speakers](http://vinceallenvince.github.io/3DP/images/rpiaplus-3speakers.jpg)
 
 ![Side view](http://vinceallenvince.github.io/3DP/images/rpiaplus-sideview.jpg)
+
+#### Files to print
+
+[rpiaplus-base-offsetx.stl](https://github.com/vinceallenvince/3DP/blob/master/RPiAplus/rpiaplus-base-offsetx.stl)
+Total: 1
+
+
 
 #### Hardware
 
