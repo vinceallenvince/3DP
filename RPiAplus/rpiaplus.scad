@@ -4,7 +4,7 @@ include <rpiaplus_lib.scad>
  * Standard RPi enclosure.
  *
  *          wallThickness = 3; // horizontal panel thickness
- *          RPiOffsetX = 0; // RPi offset from center
+ *          RPiOffsetX = 0; // RPi offset from center; -12 to make room for a wifi module
  *          RPiOffsetY = 0; // RPi offset from center
  *          edgePadding = 12; // distance bw base edge and RPi edge
  *          standoffHeight = 4; // hright of RPi standoffs
@@ -13,5 +13,7 @@ include <rpiaplus_lib.scad>
  *          spcSpeakerH = 18; // spacer height bw top and bottom speaker panels
  *          spcGrillH = 6; // spacer height bw top speaker panel and grill
  *          printGrill = false; // set to true to print grill
+ *          totalRings = 16; // total grill pattern rings
+ *          maxGrillHoleRadius = 2.25;
  */
- enclosure();
+ enclosure(printGrill=false, totalRings= 16);

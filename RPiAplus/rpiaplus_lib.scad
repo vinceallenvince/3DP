@@ -1,4 +1,4 @@
-$fa=0.5;
+    $fa=0.5;
 $fs=0.5;
 
 // RPi Dimensions: 65mm x 56mm
@@ -38,22 +38,28 @@ module spacer(radius=2.75, thickness=1.25, height=30) {
     }
 }
 
-module grillInsert(r=10, a=10, h=30, cylinderRadius=1) {
+module grillInsert(r=10, a=10, h=30, maxGrillHoleRadius, ringStep, totalRings) {
     translate([r * cos(a), r * sin(a), 0])
-        cylinder(r=cylinderRadius, h=h, center=true);
+        cylinder(r=maxGrillHoleRadius * (1 - ringStep/totalRings), h=h, center=true);
+        // !! should use a min here
 }
 
 
-module grillPattern(rings=12, stepFactor=120, h=10) {
-    for (step = [1 : rings]) {
-        for (i = [0 : stepFactor/step : 360]) {
-            grillInsert(r = 2.5 * step, a = i, h=h);
+module grillPattern(totalRings=16, stepFactor=90, h=10, spread=3.0, maxGrillHoleRadius=2.25) {
+    for (ringStep = [1 : totalRings]) {
+        for (i = [0 : stepFactor/ringStep : 360]) {
+            grillInsert(r=spread*ringStep,
+                        a=i, 
+                        h=h,
+                        maxGrillHoleRadius=maxGrillHoleRadius,
+                        ringStep=ringStep,
+                        totalRings=totalRings);
         }
     }
 }
 
 module enclosure(wallThickness=3,
-                RPiOffsetX=0,
+                RPiOffsetX=-12,
                 RPiOffsetY=0,
                 edgePadding=12,
                 printRPi=false,
@@ -61,7 +67,9 @@ module enclosure(wallThickness=3,
                 spcRPiH=26,
                 spcSpeakerH=18,
                 spcGrillH=6,
-                printGrill=false) {
+                printGrill=false,
+                totalRings=16,
+                maxGrillHoleRadius=2.25) {
     
     // Base
     translate([0, 0, wallThickness/2])
@@ -203,7 +211,7 @@ module enclosure(wallThickness=3,
             baseCorners(padding=edgePadding, z=mountZ);
             
             translate([0, 0, mountZ])
-                grillPattern(stepFactor=120);
+                grillPattern(totalRings=totalRings, stepFactor=120, maxGrillHoleRadius=maxGrillHoleRadius);
         }
     }
 }
