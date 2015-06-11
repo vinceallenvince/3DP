@@ -18,16 +18,20 @@ Including the fasteners, spacers and hardware, there are 34 total parts. The 3D 
 
 	Total: 1
 
-	[spkr-mount-top](https://github.com/vinceallenvince/3DP/blob/master/RPiAplus/spkr-mount-top.stl)
+* [spkr-mount-top](https://github.com/vinceallenvince/3DP/blob/master/RPiAplus/spkr-mount-top.stl)
+
 	Total: 1
 
-	[rpiaplus-standoff.stl](https://github.com/vinceallenvince/3DP/blob/master/RPiAplus/rpiaplus-standoff.stl)
+* [rpiaplus-standoff.stl](https://github.com/vinceallenvince/3DP/blob/master/RPiAplus/rpiaplus-standoff.stl)
+
 	Total: 4
 
-	[spacer-base-spkr-26](https://github.com/vinceallenvince/3DP/blob/master/RPiAplus/spacer-base-spkr-26.stl)
+* [spacer-base-spkr-26](https://github.com/vinceallenvince/3DP/blob/master/RPiAplus/spacer-base-spkr-26.stl)
+
 	Total: 4
 
-	[spacer-spkr-mounts.stl](https://github.com/vinceallenvince/3DP/blob/master/RPiAplus/spacer-spkr-mounts.stl)
+* [spacer-spkr-mounts.stl](https://github.com/vinceallenvince/3DP/blob/master/RPiAplus/spacer-spkr-mounts.stl)
+
 	Total: 4
 
 #### Hardware
