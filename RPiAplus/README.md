@@ -4,6 +4,8 @@
 
 Including the fasteners, spacers and hardware, there are 34 total parts. The 3D parts require ~2 hours printing time. The hardware and fasteners cost ~$60.00. See the full list below.
 
+![3 speakers](http://vinceallenvince.github.io/3DP/images/rpiaplus-3speakers.jpg)
+
 #### Hardware
 
 Raspberry Pi A+
