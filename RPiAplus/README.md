@@ -6,6 +6,8 @@ Including the fasteners, spacers and hardware, there are 34 total parts. The 3D 
 
 ![3 speakers](http://vinceallenvince.github.io/3DP/images/rpiaplus-3speakers.jpg)
 
+![Side view](http://vinceallenvince.github.io/3DP/images/rpiaplus-sideview.jpg)
+
 #### Hardware
 
 Raspberry Pi A+
