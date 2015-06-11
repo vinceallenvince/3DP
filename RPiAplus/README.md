@@ -38,7 +38,7 @@ Including the fasteners, spacers and hardware, there are 34 total parts. The 3D 
 
 Raspberry Pi A+
 
-	Element14: http://www.newark.com/raspberry-pi/raspbrry-moda-256m/sbc-raspberry-pi-model-a-256mb/dp/93X7446
+	Element14: [http://www.newark.com/raspberry-pi/raspbrry-moda-256m/sbc-raspberry-pi-model-a-256mb/dp/93X7446](http://www.newark.com/raspberry-pi/raspbrry-moda-256m/sbc-raspberry-pi-model-a-256mb/dp/93X7446)
 	Cost: $20.00 / each
 	Total: 1
 
