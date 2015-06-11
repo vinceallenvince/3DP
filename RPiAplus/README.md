@@ -11,9 +11,11 @@ Including the fasteners, spacers and hardware, there are 34 total parts. The 3D 
 #### Files to print
 
 * [rpiaplus-base-offsetx.stl](https://github.com/vinceallenvince/3DP/blob/master/RPiAplus/rpiaplus-base-offsetx.stl)
+	
 	Total: 1
 
-	[spkr-mount-bottom](https://github.com/vinceallenvince/3DP/blob/master/RPiAplus/spkr-mount-bottom.stl)
+* [spkr-mount-bottom](https://github.com/vinceallenvince/3DP/blob/master/RPiAplus/spkr-mount-bottom.stl)
+
 	Total: 1
 
 	[spkr-mount-top](https://github.com/vinceallenvince/3DP/blob/master/RPiAplus/spkr-mount-top.stl)
