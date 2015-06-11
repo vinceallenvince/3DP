@@ -8,6 +8,8 @@ Including the fasteners, spacers and hardware, there are 34 total parts. The 3D 
 
 ![Side view](http://vinceallenvince.github.io/3DP/images/rpiaplus-sideview.jpg)
 
+You can also find the 3D files on [Thingiverse](http://www.thingiverse.com/thing:875629).
+
 #### Files to print
 
 * [rpiaplus-base-offsetx](https://github.com/vinceallenvince/3DP/blob/master/RPiAplus/rpiaplus-base-offsetx.stl)
