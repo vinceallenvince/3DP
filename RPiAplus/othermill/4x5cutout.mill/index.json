@@ -1,0 +1,85 @@
+{
+  "snapOnDrag" : true,
+  "millVersion" : 2,
+  "version" : 4,
+  "fixturing" : {
+    "spoilboard" : {
+      "stockRegistration" : 1
+    },
+    "bracket" : null
+  },
+  "plans" : [
+    "5E5D45B3-A255-436A-803F-97F7318833D1"
+  ],
+  "stock" : {
+    "height" : 101.6,
+    "depth" : 3.175,
+    "flipped" : false,
+    "laminate" : "F9A0AB73-F084-4C4D-9D1B-90450853959F",
+    "offset" : {
+      "y" : -4.906045383279434e-05,
+      "b" : 0,
+      "z" : 0,
+      "x" : -1.232941622131278e-07,
+      "a" : 0,
+      "c" : 0
+    },
+    "width" : 127,
+    "name" : "(unknown)",
+    "zrotation" : 0.0005512402348196133
+  },
+  "displayUnits" : "mm",
+  "showDimensions" : true,
+  "otherplanVersionName" : "release-build",
+  "currentJobUUID" : null,
+  "tools" : [
+    {
+      "group" : "Endmill",
+      "conductive" : "yes",
+      "flutes" : 4,
+      "name" : "1\/8in Flat End Mill",
+      "profile" : [
+        [
+          3.175,
+          38.57,
+          0,
+          0
+        ],
+        [
+          3.175,
+          16,
+          0,
+          -1
+        ],
+        [
+          3.175,
+          13,
+          0,
+          1
+        ],
+        [
+          3.175,
+          0,
+          0,
+          1
+        ]
+      ],
+      "uuid" : "B5D88C4F-4FA2-4D0A-B6C2-1485F3CAB73B"
+    }
+  ],
+  "showMotionPlan" : true,
+  "otherplanVersion" : "0.14.6",
+  "stepSize" : 0,
+  "laminates" : [
+    {
+      "uuid" : "F9A0AB73-F084-4C4D-9D1B-90450853959F",
+      "group" : "Misc Soft",
+      "name" : "High Density Polyethylene",
+      "layers" : [
+        {
+          "material" : "hdpe"
+        }
+      ]
+    }
+  ]
+}
